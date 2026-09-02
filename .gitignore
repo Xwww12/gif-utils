@@ -1,0 +1,25 @@
+bin/
+obj/
+artifacts/
+*.user
+*.suo
+.vs/
+
+# Local launchers, packaged tools and build outputs
+*.lnk
+*.exe
+*.dll
+*.pdb
+*.zip
+tools/
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+settings.json
+cookies*.txt
+*.pfx
+*.p12
+*.pem
+*.key

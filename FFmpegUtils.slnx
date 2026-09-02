@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/FFmpegUtils/FFmpegUtils.csproj" />
+  <Project Path="tests/FFmpegUtils.SmokeTests/FFmpegUtils.SmokeTests.csproj" />
+</Solution>
