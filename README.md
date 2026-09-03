@@ -9,7 +9,7 @@ Windows 桌面工具，提供四项功能：
 
 ## 构建与运行
 
-本仓库仅含源码，请先构建：
+本仓库仅含源码，**请先构建，或下载使用已构建好版本**：
 
 1. 在 Windows 上安装 [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)，选择 **SDK → Windows → x64**，不要只安装 Runtime。
 2. 下载并解压源码，进入能看到 `publish.ps1` 的文件夹。在资源管理器的**地址栏**输入 `powershell`，按回车打开命令窗口。
