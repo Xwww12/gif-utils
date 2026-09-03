@@ -7,20 +7,36 @@ Windows 桌面工具，提供四项功能：
 - **X 视频下载**：解析公开帖子链接，选择画质并下载。
 - **图片信息**：查看尺寸、拍摄参数和 GPS，支持手动查询地址。
 
-## 使用
+## 构建与运行
 
-打开 `GIFUtils.exe`，按页面提示选择文件或粘贴链接即可。视频功能需先配置 `ffmpeg.exe`，其同目录须有 `ffprobe.exe`。
+本仓库仅含源码，请先构建：
 
-X 下载需要联网；地址查询会发送经纬度，不上传图片。
+1. 在 Windows 上安装 [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)，选择 **SDK → Windows → x64**，不要只安装 Runtime。
+2. 下载并解压源码，进入能看到 `publish.ps1` 的文件夹。在资源管理器的**地址栏**输入 `powershell`，按回车打开命令窗口。
+3. 在窗口中输入下面的命令，按回车运行，不要直接双击脚本：
 
-## 构建
+   ```powershell
+   .\publish.ps1
+   ```
 
-仓库仅含源码。在 Windows 上安装 .NET 10 SDK，在项目根目录运行：
+   脚本会自动下载依赖、编译并打包，首次构建需要联网。看到 `Published to:` 表示构建完成，无需再单独运行编译命令。
+
+4. 打开项目内的 `artifacts\publish\win-x64` 文件夹，双击 `GIFUtils.exe` 启动。生成的是 64 位程序，自带 .NET 运行环境。
+5. 使用视频功能前，点击“选择 FFmpeg”并选中 `ffmpeg.exe`，其同目录须有 `ffprobe.exe`。随后按页面提示选择文件或粘贴链接、设置保存位置并开始处理。图片信息只需选择图片，无需 FFmpeg。
+
+<details>
+<summary>提示“禁止运行脚本”怎么办？</summary>
+
+确认脚本来自本仓库后，在同一窗口改用：
 
 ```powershell
-.\publish.ps1
+powershell -NoProfile -ExecutionPolicy RemoteSigned -File .\publish.ps1
 ```
 
-生成的程序：`artifacts\publish\win-x64\GIFUtils.exe`（64 位，自带 .NET 运行环境，不含 FFmpeg）。
+该策略仅对本次命令启动的 PowerShell 生效，不修改系统设置。若仍提示下载的脚本未签名，请在 `publish.ps1` 的右键“属性”中解除锁定后重试。[策略说明](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+
+</details>
+
+FFmpeg 不随程序提供。X 下载需要联网；地址查询会发送经纬度，不上传图片。
 
 第三方许可见 [licenses](licenses)。
