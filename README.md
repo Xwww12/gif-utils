@@ -1,7 +1,6 @@
 # GIF Utils
 
 Windows 桌面工具，提供四项功能：
-
 - **MP4 转 GIF**：截取片段、预览视频、调整 GIF 大小。
 - **字幕烧录**：将字幕嵌入视频，支持 CPU / GPU 编码。
 - **X 视频下载**：解析公开帖子链接，选择画质并下载。
@@ -9,11 +8,12 @@ Windows 桌面工具，提供四项功能：
 
 ## 构建与运行
 
-本仓库仅含源码，**请先构建，或下载使用已构建好版本**：
+本仓库仅含源码，**请先构建，或下载使用已构建好版本**
 
+**构建流程**：
 1. 在 Windows 上安装 [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)，选择 **SDK → Windows → x64**，不要只安装 Runtime。
 2. 下载并解压源码，进入能看到 `publish.ps1` 的文件夹。在资源管理器的**地址栏**输入 `powershell`，按回车打开命令窗口。
-3. 在窗口中输入下面的命令，按回车运行，不要直接双击脚本：
+3. 在窗口中输入下面的命令：
 
    ```powershell
    .\publish.ps1
@@ -24,19 +24,6 @@ Windows 桌面工具，提供四项功能：
 4. 打开项目内的 `artifacts\publish\win-x64` 文件夹，双击 `GIFUtils.exe` 启动。生成的是 64 位程序，自带 .NET 运行环境。
 5. 使用视频功能前，点击“选择 FFmpeg”并选中 `ffmpeg.exe`，其同目录须有 `ffprobe.exe`。随后按页面提示选择文件或粘贴链接、设置保存位置并开始处理。图片信息只需选择图片，无需 FFmpeg。
 
-<details>
-<summary>提示“禁止运行脚本”怎么办？</summary>
-
-确认脚本来自本仓库后，在同一窗口改用：
-
-```powershell
-powershell -NoProfile -ExecutionPolicy RemoteSigned -File .\publish.ps1
-```
-
-该策略仅对本次命令启动的 PowerShell 生效，不修改系统设置。若仍提示下载的脚本未签名，请在 `publish.ps1` 的右键“属性”中解除锁定后重试。[策略说明](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
-
-</details>
-
-FFmpeg 不随程序提供。X 下载需要联网；地址查询会发送经纬度，不上传图片。
+**注意**：源码不包含FFmpeg，FFmpeg下载地址：https://ffmpeg.org/download.html。
 
 第三方许可见 [licenses](licenses)。
